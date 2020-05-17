@@ -1,5 +1,5 @@
-import Head from 'next/head'
-
+import react from 'react'
+import Head from "next/dist/next-server/lib/head";
 
 export default function About() {
   return (
@@ -7,12 +7,11 @@ export default function About() {
       <Head>
         <title>Home | {process.env.SITE_NAME}</title>
       </Head>
-
       <main>
-        <h1>About Us</h1>
-        <span>Welcome to About Us...</span>
+        <h1>Contact Us</h1>
+        <span>Welcome to Contact Us...</span>
       </main>
     </div>
-  )
 
+  )
 }
