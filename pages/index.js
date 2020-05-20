@@ -1,6 +1,7 @@
 import Head from "next/head";
-import fetch from "isomorphic-fetch";
+// import fetch from "isomorphic-fetch";
 import Post from "./../components/blog/post";
+import React from "react";
 
 export default function Home({ posts }) {
   return (
@@ -10,7 +11,7 @@ export default function Home({ posts }) {
       </Head>
       <main>
         <h1>Blog</h1>
-        <div>
+        <div className="ed-grid m-grid-3 row-gap">
           {posts.map((p) => (
             <Post key={p.id} post={p} />
           ))}
