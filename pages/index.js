@@ -1,7 +1,8 @@
-import Head from 'next/head'
+import Head from "next/head";
+import fetch from "isomorphic-fetch";
+import Post from "./../components/blog/post";
 
-
-export default function Home() {
+export default function Home({ posts }) {
   return (
     <div>
       <Head>
@@ -9,9 +10,22 @@ export default function Home() {
       </Head>
       <main>
         <h1>Blog</h1>
-        <span>{process.env.API_BLOG}</span>
+        <div>
+          {posts.map((p) => (
+            <Post key={p.id} post={p} />
+          ))}
+        </div>
       </main>
-
     </div>
-  )
+  );
+}
+
+export async function getStaticProps() {
+  const resp = await fetch(`${process.env.API_BLOG}/posts`);
+  const posts = await resp.json();
+  return {
+    props: {
+      posts,
+    },
+  };
 }
